@@ -4,7 +4,7 @@
 finding_donors.ipynb
 
 ### Overview: 
-This project takes applies three different supervised learning models to identify potential donors in order to reduce mailing costs. Each model is evaluated and scored for accuracy.
+This project applies three different supervised learning models to identify potential donors to reduce mailing costs. Each model is evaluated and scored for accuracy.
 
 ### Background: 
 CharityML is a fictitious charity organization located in the heart of Silicon Valley that was established 
