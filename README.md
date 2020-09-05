@@ -20,6 +20,6 @@ CharityML is a fictitious charity organization located in the heart of Silicon V
 
 With nearly 15 million working Californians, CharityML has brought you on board to help build an algorithm to best identify potential donors and reduce overhead cost of sending mail. Your goal will be evaluate and optimize several different supervised learners to determine which algorithm will provide the highest donation yield while also reducing the total number of letters being sent.
 
-## Solution: 
+## Code: 
 
-Please see the [finding_donors.ipynb](https://github.com/lizgarseeyah/Finding-Donors/blob/master/finding_donors.ipynb) file in the GitHub repository.
+[finding_donors.ipynb](https://github.com/lizgarseeyah/Finding-Donors/blob/master/finding_donors.ipynb)
