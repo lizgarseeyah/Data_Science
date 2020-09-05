@@ -12,7 +12,7 @@
 
 ### Summary:
 
-This project applies and evaluates three types of supervised learning models, Ensemble, K-NN, and SVM, to identify potential donors to target and account for how much mailing resources to allocate. Each model is evaluated and scored for accuracy and measured on f-score.
+This project applies and evaluates three types of supervised learning models, Ensemble, K-NN, and SVM, to identify potential donors. Each model is evaluated and scored for accuracy and measured on f-score.
 
 ## Problem Statement:
 
@@ -26,7 +26,7 @@ The procedure below is a high-level summary of the steps I took to address the p
 
 ### Data Exploration and preprocessing
 
-The first part of this program imports and preprocesses the data. Before preprocessing, one must select a feature set that addresses the problem statment. The next step normalizes the data by handling missing, invalid, or outlying data points by either removing or performing a method called **one-hot encoding**. The table below shows how one-hot encoding works: the function takes a categorical data type and changes to a numerical data type to match the rest of the data.
+The first part of this program imports and preprocesses the data. Before preprocessing, one must select a feature set that addresses the problem statment. The next step normalizes the data by handling missing, invalid, or outlying data points by either removing or performing a method called **one-hot encoding**. The table below shows how one-hot encoding works: the function takes a categorical data type and changes to a numerical data so that the ML algorithm can process the data.
 
 
 ![one-hot-encoding](/img/One-Hot-encoding.png) 
