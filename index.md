@@ -1,14 +1,16 @@
-## Resources Used:
+## Project Overview
+
+### Resources Used:
 
 - Jupyter Notebook 6.1.3 
 - Python 3.6
 
-## File Descriptions:
+### File Descriptions:
 
 - [finding_donors.ipynb](https://github.com/lizgarseeyah/Finding-Donors/blob/master/finding_donors.ipynb) - main file
 -  p1_charityml - zip folder containing csv data sources for the program.
 
-## Overview:
+### Overview:
 
 This project applies and evaluates three types of supervised learning models, Ensemble, K-NN, and SVM, to identify potential donors to target and account for how much mailing resources to allocate. Each model is evaluated and scored for accuracy.
 
@@ -22,17 +24,41 @@ With nearly 15 million working Californians, CharityML has brought you on board 
 
 The steps below is a high-level summary of the steps I took to address the problem statement. For a more detailed explaination, please see the [finding_donors.ipynb](https://github.com/lizgarseeyah/Finding-Donors/blob/master/finding_donors.ipynb) file in the GitHub repository.
 
-1. The first part of this program imports and preprocesses the data. Before preprocessing, one must select a feature set that addresses the problem statment. The next step normalizes the data by handling missing, invalid, or outlying data points either removing or performing a method called One-Hot encoding. The table below shows how one-hot encoding works: the function takes a categorical data type and changes to a numerical data type to match the rest of the data.
+### Data Exploration and preprocessing
+
+The first part of this program imports and preprocesses the data. Before preprocessing, one must select a feature set that addresses the problem statment. The next step normalizes the data by handling missing, invalid, or outlying data points either removing or performing a method called **one-hot encoding**. The table below shows how one-hot encoding works: the function takes a categorical data type and changes to a numerical data type to match the rest of the data.
 
 
 ![one-hot-encoding](/img/One-Hot-encoding.png) 
 
+### Train and test the data using a supervised learning method 
 
-2. The second part is to split the data into a training set (80% of the data) and a testing set (20% of the data).
+The first step before using the training models is to shuffle and split the data into a training set (80% of the data) and a testing set (20% of the data).
 
 ```markdown
 # Import train_test_split
 from sklearn.cross_validation import train_test_split
 
-```
+# Split the 'features' and 'income' data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(features_final, 
+                                                    income, 
+                                                    test_size = 0.2, 
+                                                    random_state = 0)
 
+# Show the results of the split
+print("Training set has {} samples.".format(X_train.shape[0]))
+print("Testing set has {} samples.".format(X_test.shape[0]))
+```
+The training set will be used to train the data on three supervised learning models: AdaBoost Ensemble, K-Nearest Neighbors (KNN), and Support Vecotr Machine (SVM).
+
+```markdown
+# Import the three supervised learning models from sklearn
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
+
+## Initialize the three models
+clf_A = SVC(random_state=1)#SVC
+clf_B = KNeighborsClassifier()
+clf_C = AdaBoostClassifier(random_state=1)#Ensemble Methods
+```
