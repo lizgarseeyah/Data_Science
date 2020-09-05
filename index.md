@@ -22,6 +22,23 @@ With nearly 15 million working Californians, CharityML has brought you on board 
 
 The steps below is a high-level summary of the steps I took to address the problem statement. For a more detailed explaination, please see the [finding_donors.ipynb](https://github.com/lizgarseeyah/Finding-Donors/blob/master/finding_donors.ipynb) file in the GitHub repository.
 
-1. The first part of this program imports and preprocesses the data. This step normalizes the data by handling missing, invalid, or outlying data points by either removing or performing a method called One-Hot encoding.
+1. The first part of this program imports and preprocesses the data. Before preprocessing, one must select a feature set that addresses the problem statment. The next step normalizes the data by handling missing, invalid, or outlying data points either removing or performing a method called One-Hot encoding. The table below shows how one-hot encoding works: the function takes a categorical data type and changes to a numerical data type to match the rest of the data.
 
-![one-hot-encoding](/img/One-Hot-encoding.png)
+![one-hot-encoding](/img/One-Hot-encoding.png) 
+
+2. The second part is to split the data into a training set (80% of the data) and a testing set (20% of the data).
+```markdown
+`# Import train_test_split
+from sklearn.cross_validation import train_test_split
+
+# Split the 'features' and 'income' data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(features_final, 
+                                                    income, 
+                                                    test_size = 0.2, 
+                                                    random_state = 0)
+
+# Show the results of the split
+print("Training set has {} samples.".format(X_train.shape[0]))
+print("Testing set has {} samples.".format(X_test.shape[0]))`
+```
+
