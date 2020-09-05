@@ -12,7 +12,7 @@
 
 ### Summary:
 
-This project applies and evaluates three types of supervised learning models, Ensemble, K-NN, and SVM, to identify potential donors to target and account for how much mailing resources to allocate. Each model is evaluated and scored for accuracy and measured on f-score.
+This project applies and evaluates three types of supervised learning models, Ensemble, K-NN, and SVM, to identify potential donors. Each model is evaluated and scored for accuracy and measured on f-score.
 
 ## Problem Statement:
 
