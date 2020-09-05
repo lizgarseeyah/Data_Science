@@ -146,3 +146,13 @@ importances = model.feature_importances_
 vs.feature_plot(importances, X_train, y_train)
 ```
 ![feature-importance](/img/feature-importance.png) 
+
+From the chart above, it shows three out of my selected features were correctly predicted by feature_importance: education, relationship, and capital gain. I am surprised that occupation is not at least one of the relevant features. Feature importance is measured by looking at how much the socres decreases when a feature is not there. Which leads me to think that someone that makes more than fifty-thousand dollars is dependent on the level of education, whether they are married or not, the number of hours per week they work (stability), capital gain, and certain age in their life. Race, sex, workclass, and education-num won't matter as much since this data isn't very descriptive and is varied; it's independent of a person's marital and financial status and won't contribute to the model and help predict whether a person makes more than $50K.
+
+## Final Accurancy and F-score results
+
+By modifying my model to take in the three featues, the final results are shown below:
+
+![fs-final](/img/fs-final.png) 
+
+With a limited feature set, the accuracy and f-score has decreased by 0.0137 (1.60%) and 0.0292 (4.16%), respectively. If training time was a factor, I would consider using a reduced data training set since the amount the scores decreased with the reduced training set is small.
