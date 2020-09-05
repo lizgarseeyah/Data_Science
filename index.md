@@ -3,9 +3,10 @@
 - Jupyter Notebook 6.1.3 
 - Python 3.6
 
-## Main File:
+## File Descriptions:
 
-[finding_donors.ipynb](https://github.com/lizgarseeyah/Finding-Donors/blob/master/finding_donors.ipynb)
+- [finding_donors.ipynb](https://github.com/lizgarseeyah/Finding-Donors/blob/master/finding_donors.ipynb) - main file
+-  p1_charityml - zip folder containing csv data sources for the program.
 
 ## Overview:
 
@@ -22,3 +23,4 @@ With nearly 15 million working Californians, CharityML has brought you on board 
 The steps below is a high-level summary of the steps I took to address the problem statement. For a more detailed explaination, please see the [finding_donors.ipynb](https://github.com/lizgarseeyah/Finding-Donors/blob/master/finding_donors.ipynb) file in the GitHub repository.
 
 1. The first part of this program imports and preprocesses the data. This step normalizes the data by handling missing, invalid, or outlying data points by either removing or performing a method called One-Hot encoding. 
+[Image](https://github.com/lizgarseeyah/Finding-Donors/blob/gh-pages/img/One-Hot-encoding.png)
