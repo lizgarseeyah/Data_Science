@@ -31,8 +31,8 @@ The steps below is a high-level summary of the steps I took to address the probl
 2. The second part is to split the data into a training set (80% of the data) and a testing set (20% of the data).
 
 ```markdown
-Import train_test_split
-`from sklearn.cross_validation import train_test_split` 
+# Import train_test_split
+from sklearn.cross_validation import train_test_split
 
 ```
 
