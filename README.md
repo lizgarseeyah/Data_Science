@@ -1,12 +1,16 @@
 # Finding-Donors
 
+### Resources Used:
+Jupyter Notebook 6.1.3
+Python 3.6
+
 ### Main File: 
 finding_donors.ipynb
 
 ### Overview: 
-This project applies three different supervised learning models to identify potential donors to reduce mailing costs. Each model is evaluated and scored for accuracy.
+This project applies and evaluates three types of supervised learning models, Ensemble, K-NN, and SVM, to identify potential donors to target and account for how much mailing resources to allocate. Each model is evaluated and scored for accuracy.
 
-### Background: 
+### Problem Statement: 
 CharityML is a fictitious charity organization located in the heart of Silicon Valley that was established 
 to provide financial support for people eager to learn machine learning. After nearly 32,000 letters were 
 sent to people in the community, CharityML determined that every donation they received came from someone 
