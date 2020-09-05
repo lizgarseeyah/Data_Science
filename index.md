@@ -8,7 +8,7 @@
 ### File Descriptions:
 
 - [finding_donors.ipynb](https://github.com/lizgarseeyah/Finding-Donors/blob/master/finding_donors.ipynb) - main file
--  p1_charityml - zip folder containing csv data sources for the program.
+-  [p1_charityml](https://github.com/lizgarseeyah/Finding-Donors/blob/master/p1_charityml_rev2.zip) - zip folder containing csv data sources for the program.
 
 ### Summary:
 
