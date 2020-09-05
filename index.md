@@ -31,16 +31,16 @@ The steps below is a high-level summary of the steps I took to address the probl
 2. The second part is to split the data into a training set (80% of the data) and a testing set (20% of the data).
 ```markdown
 # Import train_test_split
-`from sklearn.cross_validation import train_test_split`
+from sklearn.cross_validation import train_test_split
 
 # Split the 'features' and 'income' data into training and testing sets
-`X_train, X_test, y_train, y_test = train_test_split(features_final, 
+X_train, X_test, y_train, y_test = train_test_split(features_final, 
                                                     income, 
                                                     test_size = 0.2, 
-                                                    random_state = 0)`
+                                                    random_state = 0)
 
 # Show the results of the split
-`print("Training set has {} samples.".format(X_train.shape[0]))`
-`print("Testing set has {} samples.".format(X_test.shape[0]))`
+print("Training set has {} samples.".format(X_train.shape[0]))
+print("Testing set has {} samples.".format(X_test.shape[0]))
 ```
 
