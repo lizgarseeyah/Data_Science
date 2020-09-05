@@ -12,7 +12,7 @@
 
 ### Summary:
 
-This project applies and evaluates three types of supervised learning models, Ensemble, K-NN, and SVM, to identify potential donors to target and account for how much mailing resources to allocate. Each model is evaluated and scored for accuracy.
+This project applies and evaluates three types of supervised learning models, Ensemble, K-NN, and SVM, to identify potential donors to target and account for how much mailing resources to allocate. Each model is evaluated and scored for accuracy and measured on f-score.
 
 ## Problem Statement:
 
@@ -22,11 +22,11 @@ With nearly 15 million working Californians, CharityML has brought you on board 
 
 ## Solution: 
 
-The steps below is a high-level summary of the steps I took to address the problem statement. For a more detailed explaination, please see the [finding_donors.ipynb](https://github.com/lizgarseeyah/Finding-Donors/blob/master/finding_donors.ipynb) file in the GitHub repository.
+The procedure below is a high-level summary of the steps I took to address the problem statement. For a more detailed explaination, please see the [finding_donors.ipynb](https://github.com/lizgarseeyah/Finding-Donors/blob/master/finding_donors.ipynb) file in the GitHub repository.
 
 ### Data Exploration and preprocessing
 
-The first part of this program imports and preprocesses the data. Before preprocessing, one must select a feature set that addresses the problem statment. The next step normalizes the data by handling missing, invalid, or outlying data points either removing or performing a method called **one-hot encoding**. The table below shows how one-hot encoding works: the function takes a categorical data type and changes to a numerical data type to match the rest of the data.
+The first part of this program imports and preprocesses the data. Before preprocessing, one must select a feature set that addresses the problem statment. The next step normalizes the data by handling missing, invalid, or outlying data points by either removing or performing a method called **one-hot encoding**. The table below shows how one-hot encoding works: the function takes a categorical data type and changes to a numerical data type to match the rest of the data.
 
 
 ![one-hot-encoding](/img/One-Hot-encoding.png) 
@@ -62,12 +62,12 @@ clf_A = SVC(random_state=1)#SVC
 clf_B = KNeighborsClassifier()
 clf_C = AdaBoostClassifier(random_state=1)#Ensemble Methods
 ```
-An initial model evaluation was performed by running 1%, 10%, and 100% of the training data through each model. The accuracy and f-score metrics are used to determine the best model. Accuracy is a relevant metric, because we do not want to request donations from a person that we incorrectly identified as a potential donor. The f-score measure both precision, true positives, and the models ability to recall those individuals.
+An initial model evaluation was performed by running 1%, 10%, and 100% of the training data through each model. The accuracy and f-score metrics are used to determine the best model. Accuracy is useful here, because we do not want to request donations from a person that we incorrectly identified as a potential donor. The f-score measures both precision, true positives, and the training models' ability to recall those individuals.
 
 ![accuracy-f-score](/img/accuracy-f-score.png) 
 ![performance-metrics](/img/performance-metrics.png) 
 
-After completing the evaluation, the testing set results above indicated that the AdaBoost Classifier was the best model for this project.
+After completing the evaluation, the testing set results above indicated that the AdaBoost Classifier was the best model for this project based on time, accuracy score, and f-score.
 
 **AdaBoost Overview**
 
@@ -78,7 +78,7 @@ The only requirement for this model to converge well is that every "weak" learne
 
 **Model Tuning**
 
-To further improve the accuracy and f-score, a grid search applied. Grid search brute forces all possible combinations of hyperparamters (good guess values) and selects the best to be inserted into the AdaBoost model. 
+To further improve the accuracy and f-score, a grid search is applied. Grid search brute forces all possible combinations of hyperparamters and selects the best inputs to be inserted into the AdaBoost model. 
 
 ```markdown
 from sklearn.grid_search import GridSearchCV
@@ -122,7 +122,7 @@ print("Final F-score on the testing data: {:.4f}".format(fbeta_score(y_test, bes
 
 ### Extracting Feature Importance
 
-The final step in this project is determine which feature(s) have the most influence on the AdaBoost model to predict the right donor. Features tha I believe are relevant in predicting likely donors ranging from most important to least are:
+The final step in this project is determine which feature(s) have the most influence on the AdaBoost model. Features that I believe are relevant in predicting likely donors, ranging from most important to least are:
 
 - occupation
 - workclass
@@ -130,7 +130,7 @@ The final step in this project is determine which feature(s) have the most influ
 - education level
 - capital gain
 
-It helps to have good subject matter on this, but my reasoning is that someone with good income, a good job, good education, not a lot of dependents and with capital gain are likely to give to charities.
+It helps to have good subject matter on this, but my reasoning is that someone with good income, a good job, good education, not a lot of dependents, and capital gain are likely to give to charities.
 
 ```markdown
 # Import a supervised learning model that has 'feature_importances_'
@@ -147,7 +147,7 @@ vs.feature_plot(importances, X_train, y_train)
 ```
 ![feature-importance](/img/feature-importance.png) 
 
-From the chart above, it shows three out of my selected features were correctly predicted by feature_importance: education, relationship, and capital gain. I am surprised that occupation is not at least one of the relevant features. Feature importance is measured by looking at how much the socres decreases when a feature is not there. Which leads me to think that someone that makes more than fifty-thousand dollars is dependent on the level of education, whether they are married or not, the number of hours per week they work (stability), capital gain, and certain age in their life. Race, sex, workclass, and education-num won't matter as much since this data isn't very descriptive and is varied; it's independent of a person's marital and financial status and won't contribute to the model and help predict whether a person makes more than $50K.
+From the chart above, it shows three out of five selected features had the most influence on the AdaBoost model, these features are: education, relationship, and capital gain. In my opinion, I am surprised that occupation is not at least one of the relevant features. Feature importance is measured by looking at how much the scores decreases when a feature is not there. Which leads me to think that someone that makes more than fifty-thousand dollars is dependent on the level of education, whether they are married or not, the number of hours per week they work (stability), capital gain, and age. Race, sex, workclass, and education won't matter as much since this data isn't very descriptive and is varied(i.e. it is independent of a person's marital and financial status and won't contribute to the model and help predict whether a person makes more than $50K).
 
 ## Final Accurancy and F-score results
 
