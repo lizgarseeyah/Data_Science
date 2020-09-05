@@ -24,4 +24,4 @@ The steps below is a high-level summary of the steps I took to address the probl
 
 1. The first part of this program imports and preprocesses the data. This step normalizes the data by handling missing, invalid, or outlying data points by either removing or performing a method called One-Hot encoding.
 
-[one-hot-encoding](https://github.com/lizgarseeyah/Finding-Donors/blob/gh-pages/img/One-Hot-encoding.png)
+![one-hot-encoding](/img/One-Hot-encoding.png)
