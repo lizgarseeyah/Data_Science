@@ -10,7 +10,7 @@
 - [finding_donors.ipynb](https://github.com/lizgarseeyah/Finding-Donors/blob/master/finding_donors.ipynb) - main file
 -  p1_charityml - zip folder containing csv data sources for the program.
 
-### Overview:
+### Summary:
 
 This project applies and evaluates three types of supervised learning models, Ensemble, K-NN, and SVM, to identify potential donors to target and account for how much mailing resources to allocate. Each model is evaluated and scored for accuracy.
 
@@ -62,3 +62,16 @@ clf_A = SVC(random_state=1)#SVC
 clf_B = KNeighborsClassifier()
 clf_C = AdaBoostClassifier(random_state=1)#Ensemble Methods
 ```
+An initial model evaluation was performed by running 1%, 10%, and 100% of the training data through each model. The accuracy and f-score metrics are used to determine the best model. Accuracy is a relevant metric, because we do not want to request donations from a person that we incorrectly identified as a potential donor. The f-score measure both precision, true positives, and the models ability to recall those individuals.
+
+![accuracy-f-score](/img/accuracy-f-score.png) 
+![performance-metrics](/img/performance-metrics.png) 
+
+After completing the evaluation, the testing set results above indicated that the AdaBoost Classifier was the best model for this project.
+
+**AdaBoost Overview**
+Adaboost belongs to the family of ensemble methods. Ensemble means we take into account a set of multiple "weak" hypothesis and combine them to form one "strong" hypothesis. At each iteration, a "weak" hypothesis attempts to classify the training data, here for example it tries to approximately find the individuals making more than fifty-thousand dollars All the misclassified individuals are more heavily weighted and more focus will be given to the hard-to-classify points in the attempt to classify them correctly at the next iteration. Iteration after iteration, the combination of all those "weak" learners should converge towards a more confident, stronger hypothesis allowing to find individuals making more than fifty-thousand dollars. 
+
+The only requirement for this model to converge well is that every "weak" learner need to be slightly better than random guessing. An analogy to this method would be to ask a crowd of unexperienced doctors to diagnose a disease rather than asking only one expert. The expert would more often be right than each doctor taken individually, but when considering the crowd, all the answers should converge towards the right outcome with more and more confidence as we ask more doctors (given that each unexperienced doctor is still doing better than a randomly guessing, that the previous doctor communicates the results of his analysis to the next one and that each doctor focuses on what the previous one wasn't able to find).
+
+
