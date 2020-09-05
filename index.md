@@ -5,7 +5,7 @@
 
 ## Main File:
 
-finding_donors.ipynb[Link](https://github.com/lizgarseeyah/Finding-Donors/blob/master/finding_donors.ipynb)
+[finding_donors.ipynb](https://github.com/lizgarseeyah/Finding-Donors/blob/master/finding_donors.ipynb)
 
 ## Overview:
 
@@ -17,6 +17,6 @@ CharityML is a fictitious charity organization located in the heart of Silicon V
 
 ## Solution: 
 
-The steps below is a high-level summary of the steps I took to address the problem statement. For a more detailed explaination, please see the finding_donors.ipynb[Link](https://github.com/lizgarseeyah/Finding-Donors/blob/master/finding_donors.ipynb) file in the GitHub repository.
+The steps below is a high-level summary of the steps I took to address the problem statement. For a more detailed explaination, please see the [finding_donors.ipynb](https://github.com/lizgarseeyah/Finding-Donors/blob/master/finding_donors.ipynb) file in the GitHub repository.
 
 1. The first part of this program handles the importation and data preprocessing. This step normalizes the data by handling missing, invalid, or outlier data points by either removing
