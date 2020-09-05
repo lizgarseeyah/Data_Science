@@ -8,7 +8,7 @@
 ### File Descriptions:
 
 - [finding_donors.ipynb](https://github.com/lizgarseeyah/Finding-Donors/blob/master/finding_donors.ipynb) - main file
--  [p1_charityml](https://github.com/lizgarseeyah/Finding-Donors/blob/master/p1_charityml_rev2.zip) - zip folder containing csv data sources for the program.
+-  [p1_charityml.zip](https://github.com/lizgarseeyah/Finding-Donors/blob/master/p1_charityml_rev2.zip) - zip folder containing csv data sources for the program.
 
 ### Summary:
 
@@ -70,8 +70,53 @@ An initial model evaluation was performed by running 1%, 10%, and 100% of the tr
 After completing the evaluation, the testing set results above indicated that the AdaBoost Classifier was the best model for this project.
 
 **AdaBoost Overview**
+
 Adaboost belongs to the family of ensemble methods. Ensemble means we take into account a set of multiple "weak" hypothesis and combine them to form one "strong" hypothesis. At each iteration, a "weak" hypothesis attempts to classify the training data, here for example it tries to approximately find the individuals making more than fifty-thousand dollars All the misclassified individuals are more heavily weighted and more focus will be given to the hard-to-classify points in the attempt to classify them correctly at the next iteration. Iteration after iteration, the combination of all those "weak" learners should converge towards a more confident, stronger hypothesis allowing to find individuals making more than fifty-thousand dollars. 
 
 The only requirement for this model to converge well is that every "weak" learner need to be slightly better than random guessing. An analogy to this method would be to ask a crowd of unexperienced doctors to diagnose a disease rather than asking only one expert. The expert would more often be right than each doctor taken individually, but when considering the crowd, all the answers should converge towards the right outcome with more and more confidence as we ask more doctors (given that each unexperienced doctor is still doing better than a randomly guessing, that the previous doctor communicates the results of his analysis to the next one and that each doctor focuses on what the previous one wasn't able to find).
+[src](https://www.analyticsvidhya.com/blog/2015/11/quick-introduction-boosting-algorithms-machine-learning/)
 
+** Model Tuning **
+
+To further improve the accuracy and f-score, a grid search applied. Grid search brute forces all possible combinations of hyperparamters (good guess values) and selects the best to be inserted into the AdaBoost model. 
+
+```markdown
+from sklearn.grid_search import GridSearchCV
+from sklearn.metrics import make_scorer
+
+# Initialize the classifier
+clf = clf_C
+
+# Create the parameters list you wish to tune, using a dictionary if needed.
+# parameters = {'parameter_1': [value1, value2], 'parameter_2': [value1, value2]}
+#parameters: base_estimator, n_estimator, learning_rate, random_state, algorithm
+parameters = {'n_estimators': [25, 50, 75, 100], 'learning_rate': [0.25, 0.5, 0.75,1.0]}
+
+# Make an fbeta_score scoring object using make_scorer()
+scorer = make_scorer(fbeta_score, beta=0.5)
+
+# Perform grid search on the classifier using 'scorer' as the scoring method using GridSearchCV()
+grid_obj = GridSearchCV(clf,parameters, scorer)
+
+# Fit the grid search object to the training data and find the optimal parameters using fit()
+grid_fit = grid_obj.fit(X_train,y_train)
+
+# Get the estimator
+best_clf = grid_fit.best_estimator_
+
+# Make predictions using the unoptimized and model
+predictions = (clf.fit(X_train, y_train)).predict(X_test)
+best_predictions = best_clf.predict(X_test)
+
+# Report the before-and-afterscores
+print("Unoptimized model\n------")
+print("Accuracy score on testing data: {:.4f}".format(accuracy_score(y_test, predictions)))
+print("F-score on testing data: {:.4f}".format(fbeta_score(y_test, predictions, beta = 0.5)))
+print("\nOptimized Model\n------")
+print("Final accuracy score on the testing data: {:.4f}".format(accuracy_score(y_test, best_predictions)))
+print("Final F-score on the testing data: {:.4f}".format(fbeta_score(y_test, best_predictions, beta = 0.5)))
+```
+**Final Results**
+
+![model-evaluation](/img/model-evaluation.png)
 
