@@ -76,7 +76,7 @@ Adaboost belongs to the family of ensemble methods. Ensemble means we take into 
 The only requirement for this model to converge well is that every "weak" learner need to be slightly better than random guessing. An analogy to this method would be to ask a crowd of unexperienced doctors to diagnose a disease rather than asking only one expert. The expert would more often be right than each doctor taken individually, but when considering the crowd, all the answers should converge towards the right outcome with more and more confidence as we ask more doctors (given that each unexperienced doctor is still doing better than a randomly guessing, that the previous doctor communicates the results of his analysis to the next one and that each doctor focuses on what the previous one wasn't able to find).
 [src](https://www.analyticsvidhya.com/blog/2015/11/quick-introduction-boosting-algorithms-machine-learning/)
 
-** Model Tuning **
+**Model Tuning**
 
 To further improve the accuracy and f-score, a grid search applied. Grid search brute forces all possible combinations of hyperparamters (good guess values) and selects the best to be inserted into the AdaBoost model. 
 
@@ -120,3 +120,29 @@ print("Final F-score on the testing data: {:.4f}".format(fbeta_score(y_test, bes
 
 ![model-evaluation](/img/model-evaluation.png)
 
+### Extracting Feature Importance
+
+The final step in this project is determine which feature(s) have the most influence on the AdaBoost model to predict the right donor. Features tha I believe are relevant in predicting likely donors ranging from most important to least are:
+
+- occupation
+- workclass
+- relationship
+- education level
+- capital gain
+
+It helps to have good subject matter on this, but my reasoning is that someone with good income, a good job, good education, not a lot of dependents and with capital gain are likely to give to charities.
+
+```markdown
+# Import a supervised learning model that has 'feature_importances_'
+#from sklearn.ensemble import AdaBoostClassifier
+from sklearn.ensemble import RandomForestClassifier
+# Train the supervised model on the training set using .fit(X_train, y_train)
+model = RandomForestClassifier().fit(X_train, y_train)
+
+# Extract the feature importances using .feature_importances_ 
+importances = model.feature_importances_
+
+# Plot
+vs.feature_plot(importances, X_train, y_train)
+```
+![feature-importance](/img/feature-importance.png) 
